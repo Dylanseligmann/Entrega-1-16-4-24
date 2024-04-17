@@ -1,0 +1,52 @@
+// ¿Cómo lo hacemos? Se creará una clase que permitirá llevar cuentas individuales
+// según cada responsable.
+// ✓ Definir clase Contador
+// ✓ La clase se creará con un nombre, representando al responsable del contador.
+// ✓ El contador debe inicializarse en 0
+// ✓ Debe existir una variable estática que funcione como contador global de todas
+// las instancias de contador creadas
+
+
+
+class Contador {
+  constructor(nombre) {
+    this.nombre = nombre;
+    this.valor = 0;
+    Contador.contadoresCreados++; // Incrementar el contador de instancias
+  }
+
+  // Método para incrementar el contador individual
+  incrementar() {
+    this.valor++;
+  }
+
+  // Método para obtener el valor del contador individual
+  obtenerValor() {
+    return this.valor;
+  }
+
+  // Método para obtener el nombre del responsable
+  obtenerNombre() {
+    return this.nombre;
+  }
+
+  // Método estático para obtener el contador global de instancias creadas
+  static obtenerContadoresCreados() {
+    return Contador.contadoresCreados;
+  }
+}
+
+// Variable estática para contar todas las instancias de Contador
+Contador.contadoresCreados = 0;
+
+Ejemplo de uso
+// const contador1 = new Contador("Responsable 1");
+// contador1.incrementar();
+// contador1.incrementar();
+// console.log(contador1.obtenerNombre() + ": " + contador1.obtenerValor());
+
+const contador2 = new Contador("Responsable 2");
+contador2.incrementar();
+console.log(contador2.obtenerNombre() + ": " + contador2.obtenerValor());
+
+console.log("Contadores creados en total: " + Contador.obtenerContadoresCreados());
